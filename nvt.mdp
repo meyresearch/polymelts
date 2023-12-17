@@ -1,0 +1,30 @@
+title = PMMA-PMA melt
+define      = -Deq_polyply
+; Run Parameters
+integrator = md
+dt = 0.002             ;2fs
+nsteps = 50000        ;50000*0.002=100ps
+
+nstenergy = 1000
+nstlog = 1000
+nstxout = 1000
+
+constraints = none        ;could be h-bonds, all, etc. but I'm choosing none
+
+coulombtype = pme
+rcoulomb = 1.0
+rlist = 1.0
+
+vdwtype = Cut-off
+rvdw = 1.0
+
+tcoupl = v-rescale
+tau_t = 0.1
+ref_t = 413
+tc_grps = system        ; thermostat coupling groups;    https://manual.gromacs.org/current/reference-manual/analysis/using-groups.html#usinggroups
+
+gen_vel = yes
+gen-temp = 413
+gen-seed = 65823
+
+;comm-mode = angular        ;don't think we need hence ;
